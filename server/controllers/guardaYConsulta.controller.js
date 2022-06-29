@@ -15,3 +15,29 @@ module.exports.findLastTen = (req,res) => {
     }
     
 }
+
+module.exports.SaveNum = (req,res) => {
+    const pares0 = req.numeros[0]
+    const impares0 = req.numeros[1]
+    console.log(pares0, "pares")
+    console.log(impares0, "impares")
+
+    pares0.map((num,indx)=>{
+        let par = new NumerosPares({num_par:num}); 
+        par.save();
+    })
+    impares0.map((numi,ii)=>{
+        let impar = new NumerosImpares({num_impar:numi})
+        impar.save()
+    })
+    res.json( { status: "ok" } );  
+}
+
+
+
+
+
+
+
+
+
